@@ -20,13 +20,14 @@ you: {
 ....
 
 
+
 [source,scala]
 ----
-include::../../../../scala/main.scala[tag=SbtPlugin-sbt-tpolecat]
+include::../../../../codes/scala/main.scala[tag=SbtPlugin-sbt-tpolecat]
 ----
 
 
 [source,scala]
 ----
-include::../../../../scala/main.scala[tag=dos]
+include::../../../../codes/scala/main.scala[tag=dos]
 ----

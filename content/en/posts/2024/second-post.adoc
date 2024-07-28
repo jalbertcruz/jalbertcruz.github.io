@@ -7,7 +7,7 @@ draft: true
 == Starting
 
 
-This is **bold** text, and this is *emphasized* text.
+This is **bold** text, and this is *emphasized* other text.
 
 
 [d2]
@@ -22,11 +22,11 @@ you: {
 
 [source,scala]
 ----
-include::../../../../scala/main.scala[tag=SbtPlugin-sbt-tpolecat]
+include::../../../../codes/scala/main.scala[tag=SbtPlugin-sbt-tpolecat]
 ----
 
 
 [source,scala]
 ----
-include::../../../../scala/main.scala[tag=dos]
+include::../../../../codes/scala/main.scala[tag=dos]
 ----
