@@ -18,7 +18,7 @@
     "serve": "vitepress serve docs",
     "lint": "eslint .",
     "lint:fix": "eslint --fix .",
-    "release": "npm run lint && npm run build && changelogen --major --release  && git push --follow-tags"
+    "release": "npm run lint && npm run build"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^3.11.2",
