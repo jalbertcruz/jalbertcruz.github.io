@@ -1,8 +1,0 @@
-:8000 {
-    file_server {
-        index = index.html
-        browse
-        root public
-    }
-}
-
