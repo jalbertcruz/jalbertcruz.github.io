@@ -9,17 +9,23 @@ import useBlogFile from './useBlogFile'
 let md: MarkdownRenderer
 const { folderDir, readFrontMatter } = useBlogFile()
 
-const dir = folderDir('posts')
+const dir = folderDir('entries')
 
 export interface Post {
   title: string
-  draft: boolean
+  confidence: string
+  importance: number
+  status: string
   author: string
   href: string
-  date: {
+  start_date: {
     time: number
     string: string
     since: string
+  }
+  last_update: {
+    time: number
+    string: string
   }
   excerpt: string | undefined
   data: Record<string, any>
@@ -34,7 +40,7 @@ async function load() {
   return fs
     .readdirSync(dir)
     .map(file => getPost(file, dir))
-    .sort((a, b) => b.date.time - a.date.time)
+    .sort((a, b) => b.start_date.time - a.start_date.time)
 }
 
 export default {
@@ -52,10 +58,13 @@ function getPost(file: string, postDir: string): Post {
 
   const post: Post = {
     title: data.title,
-    draft: data.draft,
+    confidence: data.confidence,
+    importance: Number.parseInt(data.importance, 10),
+    status: data.status,
     author: data.author ? data.author : 'Unknown',
-    href: `/posts/${file.replace(/\.md$/, '.html')}`,
-    date: formatDate(data.date),
+    href: `/entries/${file.replace(/\.md$/, '.html')}`,
+    start_date: formatDate(data.start_date),
+    last_update: formatDate2(data.last_update),
     excerpt: excerpt && md.render(excerpt),
     data,
   }
@@ -67,7 +76,7 @@ function getPost(file: string, postDir: string): Post {
   return post
 }
 
-function formatDate(date: string | Date): Post['date'] {
+function formatDate(date: string | Date): Post['start_date'] {
   if (!(date instanceof Date))
     date = new Date(date)
 
@@ -81,5 +90,21 @@ function formatDate(date: string | Date): Post['date'] {
       day: 'numeric',
     }),
     since: formatDistance(date, new Date(), { addSuffix: true }),
+  }
+}
+
+function formatDate2(date: string | Date): Post['last_update'] {
+  if (!(date instanceof Date))
+    date = new Date(date)
+
+  date.setUTCHours(12)
+
+  return {
+    time: +date,
+    string: date.toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+    }),
   }
 }

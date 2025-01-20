@@ -1,4 +1,3 @@
-
 <script setup>
 import { withBase, useData } from 'vitepress'
 const url = withBase('/cv.pdf')

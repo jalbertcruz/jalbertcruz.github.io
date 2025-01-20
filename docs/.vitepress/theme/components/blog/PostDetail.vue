@@ -8,11 +8,14 @@ const { site } = useData()
 const { currentPost: post, prevPost, nextPost } = usePosts()
 const { findByName } = useAuthors()
 const author = findByName(post.value.author)
-const isDraft: boolean = post.value.draft ? post.value.draft : false
+const status: string = post.value.status ? post.value.status : 'finished'
 </script>
 
 <template>
-  <div :class="{ 'is-draft': isDraft }">
+  <div
+      :class="{ 'is-draft': status === 'draft', 'in-progress': status === 'in-progress' }"
+
+  >
     <div>
       <div class="flex justify-between items-center mb-1 text-gray-500">
         <PostAuthor :author="author" />
@@ -21,19 +24,19 @@ const isDraft: boolean = post.value.draft ? post.value.draft : false
           class="bg-primary-100  text-sm font-medium inline-flex items-center rounded"
         >
           <PostIcon :post="post" /></span>
-        <span class="text-sm">{{ post.date.since }}</span>
+        <span class="text-sm">{{ post.start_date.since }}</span>
       </div>
       <h3 class="mb-2 mt-2 text-2xl font-bold tracking-tight text-[color:var(--vp-c-brand-light)] dark:text-[color:var(--vp-c-brand-dark)]">
         <span>{{ post.title }}</span>
       </h3>
 
       <div>
-        <span class="text-sm">{{ post.date.string }}</span>
+        <span class="text-sm">{{ post.start_date.string }}</span>
       </div>
 
       <div class="flex justify-between items-center mt-2 text-gray-500">
         <a
-          v-if="prevPost" :href="`${site.base}blog${prevPost.href}`"
+          v-if="prevPost" :href="`${site.base}garden${prevPost.href}`"
           class="inline-flex items-center font-medium dark:text-white hover:text-[color:var(--vp-c-brand-dark)]"
         >
           <div class="i-bx:arrow-back mr-2" />
@@ -41,16 +44,13 @@ const isDraft: boolean = post.value.draft ? post.value.draft : false
         </a>
         <div v-if="!prevPost" />
         <a
-          v-if="nextPost" :href="`${site.base}blog${nextPost.href}`"
+          v-if="nextPost" :href="`${site.base}garden${nextPost.href}`"
           class="inline-flex items-center font-medium dark:text-white hover:text-[color:var(--vp-c-brand-dark)]"
         >
           <span>Next Post</span>
           <div class="i-bx:right-arrow-alt ml-2" />
         </a>
       </div>
-
-
-
     </div>
     <slot />
   </div>

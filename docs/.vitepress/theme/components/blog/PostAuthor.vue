@@ -17,7 +17,7 @@ const { site } = useData()
       :alt="author.name"
     >
     <a
-      :href="`${site.base}blog${author.href}`"
+      :href="`${site.base}garden${author.href}`"
       class="inline-flex items-center font-medium hover:text-[color:var(--vp-c-brand-dark)]"
     ><span class="font-medium dark:text-white">
       {{ author.name }}

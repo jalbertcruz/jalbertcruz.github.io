@@ -22,24 +22,24 @@ const author = findByName(props.post.author)
         class="bg-primary-100 text-[color:var(--vp-c-brand-light)] dark:text-[color:var(--vp-c-brand-dark)] text-sm font-medium inline-flex items-center rounded"
       >
         <PostIcon :post="post">
-          <span class="text-sm">{{ post.date.since }}</span>
+          <span class="text-sm">{{ post.start_date.since }}</span>
         </posticon></span>
     </div>
     <h2 class="mb-2 text-2xl font-bold tracking-tight text-[color:var(--vp-c-brand-light)] dark:text-[color:var(--vp-c-brand-dark)]">
       <a
-        :href="`${site.base}blog${post.href}`"
+        :href="`${site.base}garden${post.href}`"
       >{{ post.title }}</a>
     </h2>
 
     <div>
-      <span class="text-sm">{{ post.date.string }}</span>
+      <span class="text-sm">{{ post.start_date.string }}</span>
     </div>
 
     <p class="mb-5 font-light" v-html="post.excerpt" />
     <div class="flex justify-between items-center">
       <PostAuthor :author="author" />
       <a
-        :href="`${site.base}blog${post.href}`"
+        :href="`${site.base}garden${post.href}`"
         class="inline-flex items-center font-medium hover:text-[color:var(--vp-c-brand-dark)]"
       >
         Read more

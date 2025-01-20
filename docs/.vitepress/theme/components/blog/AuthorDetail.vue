@@ -23,7 +23,7 @@ const { currentAuthor: author, prevAuthor, nextAuthor } = useAuthors()
         </div>
         <div class="flex justify-between items-center mt-4 text-gray-500">
           <a
-            v-if="prevAuthor" :href="`${site.base}blog${prevAuthor.href}`"
+            v-if="prevAuthor" :href="`${site.base}garden${prevAuthor.href}`"
             class="inline-flex items-center font-medium dark:text-white hover:text-[color:var(--vp-c-brand-dark)]"
           >
             <div class="i-bx:arrow-back mr-2" />
@@ -31,7 +31,7 @@ const { currentAuthor: author, prevAuthor, nextAuthor } = useAuthors()
           </a>
           <div v-if="!prevAuthor" />
           <a
-            v-if="nextAuthor" :href="`${site.base}blog${nextAuthor.href}`"
+            v-if="nextAuthor" :href="`${site.base}garden${nextAuthor.href}`"
             class="inline-flex items-center font-medium dark:text-white hover:text-[color:var(--vp-c-brand-dark)]"
           >
             <span>Next Author</span>
