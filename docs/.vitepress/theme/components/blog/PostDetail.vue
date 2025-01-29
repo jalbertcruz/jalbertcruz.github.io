@@ -13,7 +13,7 @@ const status: string = post.value.status ? post.value.status : 'finished'
 
 <template>
   <div
-      :class="{ 'is-draft': status === 'draft', 'in-progress': status === 'in-progress' }"
+      :class="{ 'is-draft': status === 'draft', 'in-progress': status === 'in-progress' , 'in-notes': status === 'notes' }"
 
   >
     <div>

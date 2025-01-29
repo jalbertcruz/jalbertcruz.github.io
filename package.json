@@ -1,9 +1,8 @@
 {
 	"name": "Garden",
 	"type": "module",
-	"author": "Tom Lamers",
 	"license": "MIT",
-	"keywords": ["Vitepress", "Starter", "UnoCSS", "Anu"],
+	"keywords": [],
 	"main": "index.js",
 	"scripts": {
 		"dev": "vitepress dev docs",
